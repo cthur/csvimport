@@ -1,10 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Built on Ubuntu 16.04 64-bit
 
 * Ruby version: 2.3.1p112
@@ -28,7 +23,7 @@ Things you may want to cover:
   - rails generate controller Auction index
 
 * Database creation
-  - rails generate model Auction
+  - rails generate model Auction auction_name:string street_address:string city:string state:string zip:string vehicle_year:string vehicle_make:string vehicle_model:string vehicle_stock_number:string winning_bid:integer seller_payout:integer description:string
   - rake db:migrate
 
 
