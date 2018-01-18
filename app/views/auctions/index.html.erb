@@ -1,0 +1,39 @@
+<h1>Auctions</h1>
+
+<h2>Import Auctions</h2>
+
+<!-- Form allowing users to upload auctions with csv files -->
+<%= form_tag import_auctions_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<!-- Table showing auctions uploaded from a CSV file -->
+<table id="auctions">
+  <thead>
+  <tr>
+    <th>Auction Name</th>
+    <th>Number of Vehicles Sold</th>
+    <th>Total Profit</th>
+    <th>Average Profit per Vehicle</th>
+  </tr>
+  </thead>
+
+  <tbody>
+<% @auctions_uniq.each do |auction| %>
+<%# @name = auction: auction.auction_name %>
+<% @vehicles_sold = @auctions.where(auction_name: auction.auction_name).distinct.count %>
+<% @total_bid = @auctions.where(auction_name: auction.auction_name).sum("winning_bid") %>
+<% @total_payout = @auctions.where(auction_name: auction.auction_name).sum("seller_payout") %>
+<% @total_profit = @total_bid - @total_payout %>
+<% @average_profit = @total_profit / @vehicles_sold %>
+  <tr>
+    <td><%= auction.auction_name %></td>
+    <td><%= @vehicles_sold %></td>
+    <td><%= @total_profit %></td>
+    <td><%= @average_profit %></td>
+  </tr>
+<% end %>
+ </tbody> 
+
+</table>
