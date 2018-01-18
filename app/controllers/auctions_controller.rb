@@ -1,7 +1,7 @@
 class AuctionsController < ApplicationController
   def index
     @auctions = Auction.all
-    @auctions_uniq = Auction.select(:auction_name).distinct
+    @auctions_uniq = Auction.select(:auction_name, :city).distinct
     @vehicles_sold = Auction.select(:auction_name).distinct
     
     respond_to do |format|

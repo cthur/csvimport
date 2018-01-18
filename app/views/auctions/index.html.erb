@@ -13,6 +13,7 @@
   <thead>
   <tr>
     <th>Auction Name</th>
+    <th>City</th>
     <th>Number of Vehicles Sold</th>
     <th>Total Profit</th>
     <th>Average Profit per Vehicle</th>
@@ -29,6 +30,7 @@
 <% @average_profit = @total_profit / @vehicles_sold %>
   <tr>
     <td><%= auction.auction_name %></td>
+    <td><%= auction.city %></td>
     <td><%= @vehicles_sold %></td>
     <td><%= @total_profit %></td>
     <td><%= @average_profit %></td>
